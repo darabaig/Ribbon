@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2021 Dara. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="Dara_Extensions::daraextensions"
+             title="Dara Extensions" translate="title" 
+             module="Dara_Ribbon" sortOrder="30"
+             resource="Dara_Extensions::daraextensions"/>
+
+        <add id="Dara_Ribbon::manage_sribbons"
+             title="Ribbon Manager" translate="title" 
+        	 module="Dara_Ribbon" sortOrder="1" 
+        	 parent="Dara_Extensions::daraextensions"    	
+        	 resource="Dara_Ribbon::main_menu"/>
+
+        <add id="Dara_Ribbon::manage_ribbon"
+             title="Manage Ribbon" 
+             module="Dara_Ribbon" sortOrder="2" 
+             parent="Dara_Ribbon::manage_sribbons" 
+             action="ribbons/ribbon/"  
+             resource="Dara_Ribbon::manage_ribbon" /> 
+    </menu>
+</config>
+
+ 

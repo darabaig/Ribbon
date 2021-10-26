@@ -1,0 +1,36 @@
+<?php
+/**
+ * Dara.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ *
+ * @package     Dara Ribbon v1.x.x
+ * @copyright   Copyright (c) 2021 Dara.
+ * @license     End-user License Agreement
+ * See COPYING.txt for license details.
+ */
+?>
+<?php $ribbons = $block->getFrontRibbons();
+	  $currentTime = new Zend_Date(strtotime(new Zend_Date())); ?>
+<?php foreach ($ribbons as $ribos): 
+		$ribbonEndDate =new Zend_Date(strtotime($ribos->getRibbonEndDate()));
+		$ribbonStartDate =new Zend_Date(strtotime($ribos->getRibbonStartDate()));?>
+	<?php if($ribbonEndDate > $currentTime && $ribbonStartDate < $currentTime ):?>
+	    <?php if ($block->isHomePage() && ($ribos->getRibbonPages() == 'cms_index_index')): ?>
+			<ul style="background-color: <?php echo __($ribos->getRibbonColor())?>">
+			    <li><span><?php echo __($ribos->getRibbonName());?></span></li>
+			    <li><span><?php echo __($ribos->getRibbonLink());?></span></li>
+			    <li><span><?php echo __($ribos->getRibbonDescription());?></span></li>
+			</ul>
+		<?php endif;?>
+		<?php if (!$block->isHomePage() && $ribos->getRibbonPages() == 'ap'): ?>
+			<ul style="background-color: <?php echo __($ribos->getRibbonColor())?>">
+			    <li><span><?php echo __($ribos->getRibbonName());?></span></li>
+			    <li><span><?php echo __($ribos->getRibbonLink());?></span></li>
+			    <li><span><?php echo __($ribos->getRibbonDescription());?></span></li>
+			</ul>
+		<?php endif;?>
+<?php endif;?>	
+<?php endforeach;?>

@@ -1,0 +1,14 @@
+{
+    "name": "dara/ribbon",
+    "description": "adds a ribbon to home page/all pages",
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Dara\\Ribbon\\": ""
+        }
+    }
+}

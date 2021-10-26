@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2021 Dara. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.top">
+            <container name="ribbon.container" htmlTag="div" htmlClass="ribbon-info-wrap">
+                <block class="Dara\Ribbon\Block\Ribbon" name="ribbon.blk" template="Dara_Ribbon::ribbon/view/pages/ribbon.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

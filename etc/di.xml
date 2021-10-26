@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2021 Dara. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">    
+ 
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ribbons_ribbon_listing_data_source" xsi:type="string">Dara\Ribbon\Model\ResourceModel\Ribbon\Grid\Collection</item>                
+            </argument>
+        </arguments>
+    </type>    
+    <type name="Dara\Ribbon\Model\ResourceModel\Ribbon\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dara_ribbons</argument>
+            <argument name="ribbonPrefix" xsi:type="string">ribbons_ribbon_grid_collection</argument>
+            <argument name="ribbonObject" xsi:type="string">ribbons_ribbon_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Dara\Ribbon\Model\ResourceModel\Ribbon</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="RibbonRibbonGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>    
+    <virtualType name="RibbonRibbonGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Dara\Ribbon\Model\ResourceModel\Ribbon\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">RibbonRibbonGirdFilterPool</argument>
+        </arguments>
+    </virtualType>        
+</config>
