@@ -15,7 +15,7 @@ php bin/magento cache:clean
 php bin/magento cache:flush 
 ```
 ## Settings
-1. Create a ribbon form the admin dashboard: Dara Extensions->Manage Ribbons->Add New Ribbon
+1. Create a ribbon form the admin dashboard:Go To, Dara Extensions->Manage Ribbons->Add New Ribbon
 2. Schedule your ribbon by specifying the start and end date
 3. Enter title, description, color, link and pages to display.
 4. Open you store fornt and see if the ribbon is visible on the specified page.
