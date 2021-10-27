@@ -1,6 +1,10 @@
 # Magento 2: Dara Ribbons Module 
 This module will help you display a ribbo either on home page or all pages according to the conditions set in the backoffice.
 
+## Environment Used For Testing
+1. Magento Framework: 2.4.1p
+2. PHP Version: 7.4
+
 ## Installation without composer
 1. Create directory  `app/code/Dara/` folder.
 2. Copy all items to dara folder you created.

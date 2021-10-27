@@ -13,24 +13,26 @@
  */
 ?>
 <?php $ribbons = $block->getFrontRibbons();
+if ($ribbons):
 	  $currentTime = new Zend_Date(strtotime(new Zend_Date())); ?>
-<?php foreach ($ribbons as $ribos): 
-		$ribbonEndDate =new Zend_Date(strtotime($ribos->getRibbonEndDate()));
-		$ribbonStartDate =new Zend_Date(strtotime($ribos->getRibbonStartDate()));?>
-	<?php if($ribbonEndDate > $currentTime && $ribbonStartDate < $currentTime ):?>
-	    <?php if ($block->isHomePage() && ($ribos->getRibbonPages() == 'cms_index_index')): ?>
-			<ul style="background-color: <?php echo __($ribos->getRibbonColor())?>">
-			    <li><span><?php echo __($ribos->getRibbonName());?></span></li>
-			    <li><span><?php echo __($ribos->getRibbonLink());?></span></li>
-			    <li><span><?php echo __($ribos->getRibbonDescription());?></span></li>
-			</ul>
-		<?php endif;?>
-		<?php if (!$block->isHomePage() && $ribos->getRibbonPages() == 'ap'): ?>
-			<ul style="background-color: <?php echo __($ribos->getRibbonColor())?>">
-			    <li><span><?php echo __($ribos->getRibbonName());?></span></li>
-			    <li><span><?php echo __($ribos->getRibbonLink());?></span></li>
-			    <li><span><?php echo __($ribos->getRibbonDescription());?></span></li>
-			</ul>
-		<?php endif;?>
-<?php endif;?>	
-<?php endforeach;?>
+	<?php foreach ($ribbons as $ribos): 
+			$ribbonEndDate =new Zend_Date(strtotime($ribos->getRibbonEndDate()));
+			$ribbonStartDate =new Zend_Date(strtotime($ribos->getRibbonStartDate()));?>
+		<?php if($ribbonEndDate > $currentTime && $ribbonStartDate < $currentTime ):?>
+			    <?php if ($block->isHomePage() && ($ribos->getRibbonPages() == 'cms_index_index')): ?>
+					<ul style="background-color: <?php echo __($ribos->getRibbonColor())?>">
+					    <li><span><?php echo __($ribos->getRibbonName());?></span></li>
+					    <li><a href="<?php echo __($ribos->getRibbonLink());?>"><span><?php echo __($ribos->getRibbonLink());?></span></a></li>
+					    <li><span><?php echo __($ribos->getRibbonDescription());?></span></li>
+					</ul>
+				<?php endif;?>
+				<?php if (!$block->isHomePage() && $ribos->getRibbonPages() == 'ap'): ?>
+					<ul style="background-color: <?php echo __($ribos->getRibbonColor())?>">
+					    <li><span><?php echo __($ribos->getRibbonName());?></span></li>
+					    <li><span><?php echo __($ribos->getRibbonLink());?></span></li>
+					    <li><span><?php echo __($ribos->getRibbonDescription());?></span></li>
+					</ul>
+				<?php endif;?>
+			<?php endif;?>	
+	<?php endforeach;?>
+<?php endif;?>
