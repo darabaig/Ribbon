@@ -76,7 +76,7 @@ class Ribbon extends AbstractDb
     protected function _beforeSave(AbstractModel $object)
     {
 
-        if (!$this->getIsUniqueNewsToStores($object)) {
+        if (!$this->getIsUniqueRibbonToStores($object)) {
             throw new LocalizedException(
                 __('A ribbon is already active in this given time span, please consider selecting an alternate date.')
             );
@@ -85,13 +85,13 @@ class Ribbon extends AbstractDb
     }
 
 
-    public function getIsUniqueNewsToStores(AbstractModel $object)
+    public function getIsUniqueRibbonToStores(AbstractModel $object)
     {
 
         $select = $this->getConnection()->select()
         ->from(['cb' => $this->getTable('dara_ribbons')])
-        ->where('cb.ribbon_end_date > ?', $object->getData('ribbon_start_date'));
-        // ->where('cb.ribbon_id NOT IN (?)', $object->getData('ribbon_id'));
+        ->where('cb.ribbon_end_date > ?', $object->getData('ribbon_start_date'))
+        ->where('cb.ribbon_id NOT IN (?)', $object->getData('ribbon_id'));
         if ($this->getConnection()->fetchRow($select)) {
             return false;
         }
